@@ -1,3 +1,4 @@
+//2 kişinin sahip olduğu arabaların birbiri ile takas edilip edilemiceğini ölçen program yazmaya çalıştım.
 module car::car_trade {
    
     use sui::transfer;
