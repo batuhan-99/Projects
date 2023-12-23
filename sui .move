@@ -25,7 +25,7 @@ module car::car_trade {
 
     struct TraderCap has key { id:UID }
 
-     fun start_trade(car1: Car, car2: Car, ctx: &mut TxContext) -> CarTrade {
+     fun start_trade(car1: Car, car2: Car, ctx: &mut TxContext) : CarTrade {
         
         transfer::transfer(TraderCap {
             id: Object::new(ctx),
@@ -67,7 +67,7 @@ module car::car_trade {
         transfer::transfer(trade.car2, sender(ctx));
     }
 
-    fun calculate_score(car: &Car) -> u64 {
+    fun calculate_score(car: &Car):u64 {
         let mut score= 0;
         score -= car.kilometer as i64;
         score -= car.painted_areas as i64 * 100;
