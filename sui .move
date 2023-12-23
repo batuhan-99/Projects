@@ -79,6 +79,6 @@ module car::car_trade {
             score = 0;
         }
 
-        return score as u64;
+        return score ;
     }
 }
