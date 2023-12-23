@@ -61,21 +61,22 @@ module car::car_trade {
         
         let paid = split(trader_balance, trade.trade_price);
 
-       join(&mut car::car_shop::CarShop::balance_mut(ctx), paid);
+       join(CarShop::balance_mut(ctx), paid);
+ 
 
         transfer::transfer(trade.car1, sender(ctx));
         transfer::transfer(trade.car2, sender(ctx));
     }
 
     fun calculate_score(car: &Car):u64 {
-        let mut score= 0;
-        score -= car.kilometer as i64;
-        score -= car.painted_areas as i64 * 100;
-        score += car.maintenance_count as i64 * 100;
-        score -= ((2023 - car.year) * 100) as i64;
+        let score = 0;
+        score = score - car.kilometer;
+        score =score - car.painted_areas  * 100;
+        score =score + car.maintenance_count   * 100;
+        score =score - ((2023 - car.year) * 100) ;
 
-        if score < 0 {
-            score= 0;
+        if (score < 0) {
+            score = 0;
         }
 
         return score as u64;
